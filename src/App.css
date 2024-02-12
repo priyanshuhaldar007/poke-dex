@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Searchbar */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+}
+
+.input {
+    border-style: none;
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    outline: none;
+    border-radius: 50%;
+    transition: 0.5s ease-in-out;
+    background-color: #ff300094;
+    box-shadow: 0px 0px 3px #f3f3f3;
+    padding-right: 40px;
+    color: #fff;
+}
+
+.input::placeholder,
+.input {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    font-size: 17px;
+}
+
+.input::placeholder {
+    color: #ffffff;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    outline: none;
+    border-style: none;
+    border-radius: 50%;
+    pointer-events: painted;
+    background-color: transparent;
+    transition: 0.2s linear;
+}
+
+.icon:focus ~ .input,
+.input:focus {
+    box-shadow: none;
+    width: 250px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom: 3px solid #ffffff;
+    transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+
+/* Card */
+.card {
+	height: 15rem;
+	width: 15rem;
+	border-radius: 20px;
+	position: relative;
+	padding: 1.8rem;
+	border: 2px solid #c3c6ce;
+	transition: 0.5s ease-out;
+	overflow: visible;
+	cursor: pointer;
+   }
+   
+   .card-details {
+	color: black;
+	height: 100%;
+	gap: .5em;
+	display: grid;
+	place-content: center;
+   }
+   
+   .card-button {
+	transform: translate(-50%, 125%);
+	width: 60%;
+	border-radius: 1rem;
+	border: none;
+	background-color: #008bf8;
+	color: #fff;
+	font-size: 1rem;
+	padding: .5rem 1rem;
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	opacity: 0;
+	transition: 0.3s ease-out;
+   }
+
+   /*Hover*/
+   .card:hover {
+	border-color: #008bf8;
+	box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+   }
+   
+   .card:hover .card-button {
+	transform: translate(-50%, 50%);
+	opacity: 1;
+   }
