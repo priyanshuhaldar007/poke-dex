@@ -5,7 +5,7 @@ export const Card = ({ name, url }) => {
         <div href="" className="card">
         <a href={url}>
             <div className="card-details">
-                <img src={url} alt="" />
+                <img src={`https://img.pokemondb.net/artwork/large/${name}.jpg`} alt="" />
             </div>
             <button className="card-button">{name}</button>
             </a>

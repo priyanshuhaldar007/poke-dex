@@ -3,7 +3,7 @@ import logo from "../assets/images/logo.png";
 export const Navbar = () => {
     return (
         // navbar parent component
-        <div className="bg-gradient-to-r from-light-red to-red p-2 flex flex-row justify-between">
+        <div className="bg-gradient-to-r from-light-red to-red p-2 flex flex-row justify-between sticky top-0 z-10 backdrop-blur-sm">
             {/* logoside */}
             <div className="flex">
                 <div className="">
