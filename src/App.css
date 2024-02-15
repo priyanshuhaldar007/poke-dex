@@ -85,6 +85,10 @@
 	display: grid;
 	place-content: center;
    }
+
+   .card-details img {
+    height: 14rem;
+   }
    
    .card-button {
 	transform: translate(-50%, 125%);

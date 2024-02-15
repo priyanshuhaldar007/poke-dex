@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { Navbar } from "./components/Navbar";
 import { CardList } from "./components/CardList";
+import { Loader } from "./components/Loader";
 
 function App() {
     const [page, setPage] = useState(0);
@@ -33,18 +34,30 @@ function App() {
         getpokemonList();
     }, []);
 
-    const handleScroll = () => {
+    // const handleScroll = () => {
         
-        if (
-            window.innerHeight + document.documentElement.scrollTop !==
-                document.documentElement.offsetHeight ||
-            isLoading
-        ) {
-            return;
-        }
-        console.log('ji');
-        getpokemonList();
-    };
+    //     if (
+    //         window.innerHeight + document.documentElement.scrollTop !==
+    //             document.documentElement.offsetHeight ||
+    //         isLoading
+    //     ) {
+    //         return;
+    //     }
+    //     console.log('ji');
+    //     getpokemonList();
+    // };
+
+    // function debounce(func, delay) {
+    //     let timeoutId;
+    //     return function() {
+    //         const context = this;
+    //         const args = arguments;
+    //         clearTimeout(timeoutId);
+    //         timeoutId = setTimeout(() => {
+    //             func.apply(context, args);
+    //         }, delay);
+    //     };
+    // }
 
     function checkIfScrolledToBottom() {
         // Calculate how far the user has scrolled down the page
@@ -59,20 +72,22 @@ function App() {
         // Check if the user has scrolled to the bottom
         if (scrollTop + windowHeight === documentHeight) {
             // If scrolled to bottom, log something to the console
-            // getpokemonList();
-            console.log('hiii', scrollTop , windowHeight , documentHeight);
+            getpokemonList();
+            console.log(scrollTop , windowHeight , documentHeight);
         }
         // console.log(data, page);
     }
 
     useEffect(() => {
+        // const debouncedScrollCheck = debounce(checkIfScrolledToBottom, 200);
         window.addEventListener("scroll", checkIfScrolledToBottom);
-        return () => window.removeEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", checkIfScrolledToBottom);
     }, [isLoading]);
 
     return (
         <>
             <Navbar />
+            <Loader/>
             <CardList data={data}/>
             {isLoading && <p>Loading...</p>}
             {error && <p>Error: {error.message}</p>}
