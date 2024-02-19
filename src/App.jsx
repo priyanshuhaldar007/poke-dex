@@ -3,6 +3,7 @@ import "./App.css";
 import { Navbar } from "./components/Navbar";
 import { CardList } from "./components/CardList";
 import { Loader } from "./components/Loader";
+import { Modal } from "./components/Modal";
 
 function App() {
     const [page, setPage] = useState(0);
@@ -24,13 +25,14 @@ function App() {
                 setData((prevData) => {
                     return [...prevData, ...res.results];
                 });
-                setPage((prevPage) => prevPage + 20);
             }, 1000);
+            setPage((prevPage) => prevPage + 20);
         } catch (error) {
             setError(error);
         } finally {
             setIsLoading(false);
         }
+        console.log(page);
     }
     useEffect(() => {
         getpokemonList();
@@ -83,6 +85,7 @@ function App() {
                 <CardList data={data} />
             </div>
             {error && <p>Error: {error.message}</p>}
+            <Modal id={1}/>
         </>
     );
 }
