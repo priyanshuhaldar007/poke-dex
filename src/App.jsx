@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import "./App.css";
 import { Navbar } from "./components/Navbar";
 import { CardList } from "./components/CardList";
@@ -19,61 +19,51 @@ function App() {
                 `https://pokeapi.co/api/v2/pokemon/?offset=${page}&limit=20`
             );
             const res = await response.json();
-            setData((prevData) => {
-                return [...prevData, ...res.results];
-            });
-            setPage((prevPage) => prevPage + 20);
+
+            setTimeout(() => {
+                setData((prevData) => {
+                    return [...prevData, ...res.results];
+                });
+                setPage((prevPage) => prevPage + 20);
+            }, 1000);
         } catch (error) {
             setError(error);
         } finally {
             setIsLoading(false);
         }
-        
     }
     useEffect(() => {
         getpokemonList();
     }, []);
 
-    // const handleScroll = () => {
-        
-    //     if (
-    //         window.innerHeight + document.documentElement.scrollTop !==
-    //             document.documentElement.offsetHeight ||
-    //         isLoading
-    //     ) {
-    //         return;
-    //     }
-    //     console.log('ji');
-    //     getpokemonList();
-    // };
-
-    // function debounce(func, delay) {
-    //     let timeoutId;
-    //     return function() {
-    //         const context = this;
-    //         const args = arguments;
-    //         clearTimeout(timeoutId);
-    //         timeoutId = setTimeout(() => {
-    //             func.apply(context, args);
-    //         }, delay);
-    //     };
-    // }
-
     function checkIfScrolledToBottom() {
         // Calculate how far the user has scrolled down the page
-        const scrollTop = (window.scrollY !== undefined) ? window.scrollY : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-        const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        const scrollTop =
+            window.scrollY !== undefined
+                ? window.scrollY
+                : (
+                      document.documentElement ||
+                      document.body.parentNode ||
+                      document.body
+                  ).scrollTop;
+        const windowHeight =
+            window.innerHeight ||
+            document.documentElement.clientHeight ||
+            document.body.clientHeight;
         const documentHeight = Math.max(
-            document.body.scrollHeight, document.documentElement.scrollHeight,
-            document.body.offsetHeight, document.documentElement.offsetHeight,
-            document.body.clientHeight, document.documentElement.clientHeight
+            document.body.scrollHeight,
+            document.documentElement.scrollHeight,
+            document.body.offsetHeight,
+            document.documentElement.offsetHeight,
+            document.body.clientHeight,
+            document.documentElement.clientHeight
         );
-    
+
         // Check if the user has scrolled to the bottom
         if (scrollTop + windowHeight === documentHeight) {
             // If scrolled to bottom, log something to the console
             getpokemonList();
-            console.log(scrollTop , windowHeight , documentHeight);
+            console.log(scrollTop, windowHeight, documentHeight);
         }
         // console.log(data, page);
     }
@@ -81,15 +71,17 @@ function App() {
     useEffect(() => {
         // const debouncedScrollCheck = debounce(checkIfScrolledToBottom, 200);
         window.addEventListener("scroll", checkIfScrolledToBottom);
-        return () => window.removeEventListener("scroll", checkIfScrolledToBottom);
+        return () =>
+            window.removeEventListener("scroll", checkIfScrolledToBottom);
     }, [isLoading]);
 
     return (
         <>
             <Navbar />
-            <Loader/>
-            <CardList data={data}/>
-            {isLoading && <p>Loading...</p>}
+            {isLoading && <Loader />}
+            <div className={`${isLoading ? "bg-red" : ""}`}>
+                <CardList data={data} />
+            </div>
             {error && <p>Error: {error.message}</p>}
         </>
     );
