@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { Navbar } from "./components/Navbar";
 import { CardList } from "./components/CardList";
@@ -79,7 +79,7 @@ function App() {
         <>
             <Navbar />
             {isLoading && <Loader />}
-            <div className={`${isLoading ? "bg-red" : ""}`}>
+            <div className={`${isLoading ? "hidden" : ""}`}>
                 <CardList data={data} />
             </div>
             {error && <p>Error: {error.message}</p>}

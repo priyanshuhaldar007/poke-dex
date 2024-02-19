@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'; // Import PropTypes
 import { Card } from "./Card";
 
 export const CardList = ({ data }) => {
@@ -15,4 +16,15 @@ export const CardList = ({ data }) => {
             }
         </div>
     );
+};
+
+
+// Add prop validation
+CardList.propTypes = {
+    data: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            url: PropTypes.string.isRequired
+        })
+    ).isRequired
 };
