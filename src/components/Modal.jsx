@@ -2,7 +2,7 @@ import PropTypes from "prop-types"; // Import PropTypes
 
 export const Modal = ({ id }) => {
     return (
-        <div className="absolute top-0 left-0 h-full w-full bg-red">
+        <div className="absolute top-0 left-0 h-full w-full bg-indigo-500 z-20">
             <p>Modal {id}</p>
         </div>
     );

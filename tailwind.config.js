@@ -5,10 +5,10 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    colors: {
-      'light-red': '#ff300094',
-      'red': '#D94523',
-    },
+    // colors: {
+    //   'light-red': '#ff300094',
+    //   'red': '#D94523',
+    // },
     extend: {},
   },
   plugins: [],
