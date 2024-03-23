@@ -10,7 +10,8 @@ Currently, two official plugins are available:
 
 ----
 
-Project on halt.
+## Project on halt.
+
 Resources: 
 - [pokemon API refernce](https://pokeapi.co/api/v2/pokemon/4/)
 - [Pokedex reference](https://in.portal-pokemon.com/play/pokedex)
