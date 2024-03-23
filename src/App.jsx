@@ -8,7 +8,7 @@ import { Modal } from "./components/Modal";
 function App() {
     const [page, setPage] = useState(0);
     const [data, setData] = useState([]); // array of pokemon data on the site.
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     async function getpokemonList() {
@@ -67,8 +67,8 @@ function App() {
             getpokemonList();
             console.log(scrollTop, windowHeight, documentHeight);
         }
-        // console.log(data, page);
     }
+    console.log(isLoading);
 
     useEffect(() => {
         // const debouncedScrollCheck = debounce(checkIfScrolledToBottom, 200);
@@ -81,7 +81,7 @@ function App() {
         <>
             <Navbar />
             {isLoading && <Loader />}
-            <div className={`${isLoading ? "hidden" : ""}`}>
+            <div className={`${isLoading ? "hidden" : ""} abc`}>
                 <CardList data={data} />
             </div>
             {error && <p>Error: {error.message}</p>}
